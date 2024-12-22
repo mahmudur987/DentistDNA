@@ -1,61 +1,99 @@
+"use client";
+
 import Link from "next/link";
-import React from "react";
-
+import React, { useState } from "react";
+import ModalWrapper from "../Modal/ModalWrapper";
+import Signup from "../SignUp/SignUp";
+import { useAuth } from "@/Context/UserContext";
+export const menuIcon = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="h-5 w-5"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M4 6h16M4 12h8m-8 6h16"
+    />
+  </svg>
+);
+const menuItems = (
+  <>
+    <li>
+      <Link href={"/"}>Home</Link>
+    </li>
+    <li>
+      <Link href={"/"}>Blog</Link>
+    </li>
+    <li>
+      <Link href={"/"}>About Us</Link>
+    </li>
+    <li>
+      <Link href={"/"}>Contact US</Link>
+    </li>
+  </>
+);
 const Navbar = () => {
-  const menuItems = (
-    <>
-      <li>
-        <Link href={"/"}>Home</Link>
-      </li>
-      <li>
-        <Link href={"/"}>Blog</Link>
-      </li>
-      <li>
-        <Link href={"/"}>About Us</Link>
-      </li>
-      <li>
-        <Link href={"/"}>Contact US</Link>
-      </li>
-    </>
-  );
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { user, logout } = useAuth();
 
+  console.log(user);
   return (
-    <div className="navbar bg-base-100">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+    <>
+      <div className="navbar bg-base-100">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+              {menuIcon}
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
+              {menuItems}
+            </ul>
           </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-          >
-            {menuItems}
-          </ul>
+          <a className="btn btn-ghost text-xl">Dentist DNA</a>
         </div>
-        <a className="btn btn-ghost text-xl">Dentist DNA</a>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1">{menuItems}</ul>
+        </div>
+        {user ? (
+          <div className="navbar-end gap-5">
+            <h2>{user.displayName}</h2>
+            <button className="btn btn-accent btn-sm" onClick={() => logout()}>
+              Sign Out
+            </button>
+          </div>
+        ) : (
+          <div className="navbar-end  gap-5">
+            <button
+              className="btn btn-primary"
+              onClick={() => setIsModalOpen(true)}
+            >
+              Sign Up
+            </button>
+            <button
+              className="btn btn-primary"
+              onClick={() => setIsModalOpen(true)}
+            >
+              Sign In
+            </button>
+          </div>
+        )}
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{menuItems}</ul>
-      </div>
-      <div className="navbar-end flex gap-3">
-        <button className="">Log In</button>
-        <button className="">Sign Up</button>
-      </div>
-    </div>
+
+      <ModalWrapper
+        isVisible={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      >
+        <Signup />
+      </ModalWrapper>
+    </>
   );
 };
 
