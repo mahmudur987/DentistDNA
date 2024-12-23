@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+"use client";
+
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { useAuth } from "@/Context/UserContext";
 import { GoogleAuthProvider } from "firebase/auth";
-const Signup = () => {
+const Signup = ({ setIsModalOpen }) => {
   const {
     register,
     formState: { errors },
@@ -12,17 +14,17 @@ const Signup = () => {
   } = useForm();
 
   const { signUp, updateUserProfile, googleLogIn, SetUser } = useAuth();
-
+  const [loading, setLoading] = useState(false);
   const from = "/";
 
   const handleSignUp = (data) => {
-    Setloading(true);
+    setLoading(true);
 
     const image = data.photo[0];
     const imageData = new FormData();
     imageData.append("image", image);
 
-    const url = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_IMAGEbbkey}`;
+    const url = `https://api.imgbb.com/1/upload?key=${"8dfd689dd9ec2d7fbe4d40cbf66cfb37"}`;
     fetch(url, {
       method: "POST",
       body: imageData,
@@ -34,8 +36,7 @@ const Signup = () => {
           const photoURL = imagedata.data.display_url;
           signUp(data.email, data.password)
             .then((result) => {
-              // const user = result.user;
-
+              // const user = result.use
               updateProfile(data.name, photoURL, data.email, data.userType);
             })
             .catch((error) => {
@@ -51,7 +52,7 @@ const Signup = () => {
     const profile = { displayName, photoURL };
     updateUserProfile(profile)
       .then(() => {
-        saveUser(fullprofile);
+        setIsModalOpen(false);
       })
       .catch((err) => {
         toast.error(err.message);
@@ -64,6 +65,7 @@ const Signup = () => {
       .then((result) => {
         const user = result.user;
         SetUser(user);
+        setIsModalOpen(false);
       })
       .catch((error) => {
         toast.error(error.message);
@@ -100,7 +102,7 @@ const Signup = () => {
   //         console.error("Error:", error);
   //       });
   //     toast.success("user signup successfully");
-  //     Setloading(false);
+  //     setLoading(false);
   //     navigate(from, { replace: true });
   //   };
 

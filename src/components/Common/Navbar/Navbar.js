@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import ModalWrapper from "../Modal/ModalWrapper";
 import Signup from "../SignUp/SignUp";
 import { useAuth } from "@/Context/UserContext";
+import Login from "../Login/Login";
 export const menuIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -39,6 +40,7 @@ const menuItems = (
 );
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLogInModalOpen, setIsLogInModalOpen] = useState(false);
   const { user, logout } = useAuth();
 
   console.log(user);
@@ -72,16 +74,16 @@ const Navbar = () => {
         ) : (
           <div className="navbar-end  gap-5">
             <button
-              className="btn btn-primary"
+              className="btn btn-primary btn-sm"
               onClick={() => setIsModalOpen(true)}
             >
               Sign Up
             </button>
             <button
-              className="btn btn-primary"
-              onClick={() => setIsModalOpen(true)}
+              className="btn btn-primary btn-sm"
+              onClick={() => setIsLogInModalOpen(true)}
             >
-              Sign In
+              Log In
             </button>
           </div>
         )}
@@ -91,7 +93,13 @@ const Navbar = () => {
         isVisible={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       >
-        <Signup />
+        <Signup setIsModalOpen={setIsModalOpen} />
+      </ModalWrapper>
+      <ModalWrapper
+        isVisible={isLogInModalOpen}
+        onClose={() => setIsLogInModalOpen(false)}
+      >
+        <Login setIsLogInModalOpen={setIsLogInModalOpen} />
       </ModalWrapper>
     </>
   );
