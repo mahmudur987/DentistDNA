@@ -68,8 +68,8 @@ const Signup = ({ setIsModalOpen }) => {
         setIsModalOpen(false);
       })
       .catch((error) => {
-        toast.error(error.message);
-        console.error(error);
+        toast.error(error.message.slice(22, 100));
+        console.error("Error", error.message);
       });
   };
   //   const saveUser = (fullprofile) => {

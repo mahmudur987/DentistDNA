@@ -6,6 +6,12 @@ import ModalWrapper from "../Modal/ModalWrapper";
 import Signup from "../SignUp/SignUp";
 import { useAuth } from "@/Context/UserContext";
 import Login from "../Login/Login";
+import Image from "next/image";
+import { FaSignOutAlt } from "react-icons/fa";
+import img1 from "../../../Assets/dummy 1.jpg";
+import img2 from "../../../Assets/dummy 2.jpeg";
+export const profilePlaceHolder = img1;
+export const PlaceHolder = img2;
 export const menuIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -28,13 +34,13 @@ const menuItems = (
       <Link href={"/"}>Home</Link>
     </li>
     <li>
-      <Link href={"/"}>Blog</Link>
+      <Link href={"/Blog"}>Blog</Link>
     </li>
     <li>
-      <Link href={"/"}>About Us</Link>
+      <Link href={"/AboutUs"}>About Us</Link>
     </li>
     <li>
-      <Link href={"/"}>Contact US</Link>
+      <Link href={"/OrderUs"}>Order US</Link>
     </li>
   </>
 );
@@ -42,11 +48,11 @@ const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogInModalOpen, setIsLogInModalOpen] = useState(false);
   const { user, logout } = useAuth();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  console.log(user);
   return (
     <>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 fixed z-[1]">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -65,22 +71,67 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{menuItems}</ul>
         </div>
         {user ? (
-          <div className="navbar-end gap-5">
-            <h2>{user.displayName}</h2>
-            <button className="btn btn-accent btn-sm" onClick={() => logout()}>
-              Sign Out
-            </button>
+          <div className="navbar-end gap-5  relative">
+            <div
+              className="avatar online"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <div className="w-12 rounded-full">
+                <Image
+                  src={user.photoURL ?? profilePlaceHolder}
+                  alt="Avatar"
+                  width={50}
+                  height={50}
+                />
+              </div>
+            </div>
+
+            {isMenuOpen && (
+              <div className="absolute top-full right-3 w-72 shadow-2xl bg-base-100 p-5  rounded-lg flex flex-col items-center  gap-5">
+                <div
+                  className="avatar"
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                >
+                  <div className="w-24 rounded-full">
+                    <Image
+                      src={user.photoURL ?? profilePlaceHolder}
+                      alt="Avatar"
+                      width={100}
+                      height={100}
+                    />
+                  </div>
+                </div>
+                <div>
+                  <h2
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    className="cursor-pointer font-bold text-lg text-center"
+                  >
+                    {user.displayName}
+                  </h2>
+                  <p className="text-sm text-center">{user.email}</p>
+                </div>
+                <button
+                  className="btn btn-accent btn-sm"
+                  onClick={() => {
+                    logout();
+                    setIsMenuOpen(!isMenuOpen);
+                  }}
+                >
+                  <FaSignOutAlt /> Sign Out
+                </button>
+              </div>
+            )}
           </div>
         ) : (
           <div className="navbar-end  gap-5">
             <button
-              className="btn btn-primary btn-sm"
+              className="btn btn-info btn-sm"
               onClick={() => setIsModalOpen(true)}
             >
               Sign Up
             </button>
             <button
-              className="btn btn-primary btn-sm"
+              className="btn btn-info btn-sm"
               onClick={() => setIsLogInModalOpen(true)}
             >
               Log In

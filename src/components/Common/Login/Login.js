@@ -33,11 +33,16 @@ const Login = ({ setIsLogInModalOpen }) => {
       return toast.error("please logout first");
     }
 
-    googleLogIn(provider).then((result) => {
-      const user = result.user;
-      setIsLogInModalOpen(false);
-      SetUser(user);
-    });
+    googleLogIn(provider)
+      .then((result) => {
+        const user = result.user;
+        setIsLogInModalOpen(false);
+        SetUser(user);
+      })
+      .catch((error) => {
+        toast.error(error.message.slice(22, 100));
+        console.error("Error", error.message);
+      });
   };
 
   return (
