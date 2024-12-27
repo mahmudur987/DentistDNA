@@ -1,11 +1,11 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import React from "react";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { useAuth } from "@/Context/UserContext";
 
-const Login = ({ setIsLogInModalOpen }) => {
+const Login = ({ setIsLogInModalOpen, setIsModalOpen = () => {} }) => {
   const {
     register,
     formState: { errors },
@@ -51,7 +51,7 @@ const Login = ({ setIsLogInModalOpen }) => {
         <h1 className="text-4xl text-center font-bold mb-8">LOG IN</h1>
 
         <form
-          className="space-y-6 w-full "
+          className="space-y-1 w-full "
           onSubmit={handleSubmit(handleLogin)}
         >
           <div className="form-control w-full">
@@ -106,7 +106,21 @@ const Login = ({ setIsLogInModalOpen }) => {
             </button>
           </div>
         </form>
-
+        <p className="my-3">
+          Don t have an account{" "}
+          <button>
+            {" "}
+            <button
+              onClick={() => {
+                setIsModalOpen(true);
+                setIsLogInModalOpen(false);
+              }}
+              className="link text-sm text-blue-600 hover:underline"
+            >
+              Sign Up
+            </button>
+          </button>
+        </p>
         <div className="divider my-8">OR</div>
 
         <div className="text-center">

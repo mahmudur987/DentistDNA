@@ -65,7 +65,9 @@ const Navbar = () => {
               {menuItems}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Dentist DNA</a>
+          <Link href={"/"} className="btn btn-ghost text-xl">
+            Dentist DNA
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{menuItems}</ul>
@@ -125,16 +127,10 @@ const Navbar = () => {
         ) : (
           <div className="navbar-end  gap-5">
             <button
-              className="btn btn-info btn-sm"
-              onClick={() => setIsModalOpen(true)}
-            >
-              Sign Up
-            </button>
-            <button
-              className="btn btn-info btn-sm"
+              className="btn  btn-sm  "
               onClick={() => setIsLogInModalOpen(true)}
             >
-              Log In
+              Sign In
             </button>
           </div>
         )}
@@ -144,13 +140,19 @@ const Navbar = () => {
         isVisible={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       >
-        <Signup setIsModalOpen={setIsModalOpen} />
+        <Signup
+          setIsLogInModalOpen={setIsLogInModalOpen}
+          setIsModalOpen={setIsModalOpen}
+        />
       </ModalWrapper>
       <ModalWrapper
         isVisible={isLogInModalOpen}
         onClose={() => setIsLogInModalOpen(false)}
       >
-        <Login setIsLogInModalOpen={setIsLogInModalOpen} />
+        <Login
+          setIsLogInModalOpen={setIsLogInModalOpen}
+          setIsModalOpen={setIsModalOpen}
+        />
       </ModalWrapper>
     </>
   );

@@ -4,6 +4,8 @@ import Navbar from "@/components/Common/Navbar/Navbar";
 import Footer from "@/components/Common/Footer/Footer";
 import UserContext from "@/Context/UserContext";
 import { Toaster } from "react-hot-toast";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

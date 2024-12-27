@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { useAuth } from "@/Context/UserContext";
 import { GoogleAuthProvider } from "firebase/auth";
-const Signup = ({ setIsModalOpen }) => {
+const Signup = ({ setIsModalOpen, setIsLogInModalOpen }) => {
   const {
     register,
     formState: { errors },
@@ -211,6 +211,20 @@ const Signup = ({ setIsModalOpen }) => {
           />
         </div>
       </form>
+
+      <p className="text-center mt-4">
+        already have an account?{" "}
+        <button
+          onClick={() => {
+            setIsModalOpen(false);
+            setIsLogInModalOpen(true);
+          }}
+          className="text-blue-600"
+        >
+          Log In
+        </button>
+      </p>
+
       <div className="text-center">
         <button
           type="button"
