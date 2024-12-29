@@ -1,3 +1,16 @@
+const ourOffers = [
+  "Timely Delivery",
+  "Customized Solutions",
+  "Expert Consultation",
+  "24/7 Support",
+  "Scalable Solutions",
+  "SEO Optimization",
+  "User-Friendly Designs",
+  "Affordable Pricing",
+  "High-Quality Standards",
+  "Post-Launch Support",
+];
+
 export const portfolioPackages = [
   {
     id: 1,
@@ -8,8 +21,7 @@ export const portfolioPackages = [
       "Perfect for individuals or small businesses starting out. This package covers the essentials for creating a professional online portfolio.",
     price: 199, // Price in USD
     duration: "2 weeks", // Estimated completion time
-    whatWeOffer:
-      "Time-to-time delivery, customer-focused solutions, and high-quality design.",
+    whatWeOffer: ourOffers,
     includes: [
       "Basic website design with 3 pages",
       "Responsive layout",
@@ -48,8 +60,7 @@ export const portfolioPackages = [
       "Ideal for businesses and professionals looking for a comprehensive portfolio solution.",
     price: 499,
     duration: "4 weeks",
-    whatWeOffer:
-      "Time-to-time delivery, customer-focused solutions, and high-quality design.",
+    whatWeOffer: ourOffers,
     includes: [
       "Custom website design with 5 pages",
       "Advanced SEO setup",
@@ -89,8 +100,7 @@ export const portfolioPackages = [
       "A premium package for large businesses and organizations that require advanced portfolio solutions.",
     price: 999,
     duration: "6 weeks",
-    whatWeOffer:
-      "Time-to-time delivery, customer-focused solutions, and high-quality design.",
+    whatWeOffer: ourOffers,
     includes: [
       "Custom website design with unlimited pages",
       "Integration with advanced tools and APIs",
