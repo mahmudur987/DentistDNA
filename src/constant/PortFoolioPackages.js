@@ -11,9 +11,10 @@ const ourOffers = [
   "Post-Launch Support",
 ];
 
-export const portfolioPackages = [
+export const serviceData = [
   {
     id: 1,
+    mainCategory: { id: 1, slug: "portfolio", name: "Portfolio" },
     slug: "starter-package",
     packageName: "Starter Portfolio Package",
     title: "Starter Portfolio Package",
@@ -22,12 +23,13 @@ export const portfolioPackages = [
     price: 199, // Price in USD
     duration: "2 weeks", // Estimated completion time
     whatWeOffer: ourOffers,
-    includes: [
-      "Basic website design with 3 pages",
-      "Responsive layout",
+    includedServices: [
+      "Basic website design with HTML and CSS",
+      "Responsive layout for mobile and desktop",
       "Portfolio showcase section",
       "Basic SEO setup",
-      "Contact form integration",
+      "Basic hosting and domain registration",
+      "3 page portfolio (Home, About/Blog, Portfolio)",
     ],
     additionalServices: [
       {
@@ -53,6 +55,8 @@ export const portfolioPackages = [
   },
   {
     id: 2,
+    mainCategory: { id: 1, slug: "portfolio", name: "Portfolio" },
+
     slug: "professional-package",
     packageName: "Professional Portfolio Package",
     title: "Professional Portfolio Package",
@@ -61,7 +65,7 @@ export const portfolioPackages = [
     price: 499,
     duration: "4 weeks",
     whatWeOffer: ourOffers,
-    includes: [
+    includedServices: [
       "Custom website design with 5 pages",
       "Advanced SEO setup",
       "Blog integration",
@@ -93,6 +97,8 @@ export const portfolioPackages = [
   },
   {
     id: 3,
+    mainCategory: { id: 1, slug: "portfolio", name: "Portfolio" },
+
     slug: "enterprise-package",
     packageName: "Enterprise Portfolio Package",
     title: "Enterprise Portfolio Package",
@@ -101,7 +107,7 @@ export const portfolioPackages = [
     price: 999,
     duration: "6 weeks",
     whatWeOffer: ourOffers,
-    includes: [
+    includedServices: [
       "Custom website design with unlimited pages",
       "Integration with advanced tools and APIs",
       "Comprehensive SEO and analytics setup",
@@ -131,3 +137,6 @@ export const portfolioPackages = [
     backgroundColor: "#dee2e6",
   },
 ];
+export const portfolioPackages = serviceData.filter(
+  (pkg) => pkg.mainCategory.slug === "portfolio"
+);

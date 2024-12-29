@@ -25,6 +25,7 @@ const PackageDetailsPage = ({ params }) => {
     duration,
     includedServices,
     additionalServices,
+    whatWeOffer,
     features,
     images = [],
   } = packageDetails;
@@ -110,6 +111,18 @@ const PackageDetailsPage = ({ params }) => {
                   <li key={index}>
                     {feature.feature}: {feature.value}
                   </li>
+                ))
+              ) : (
+                <li>No features listed</li>
+              )}
+            </ul>
+          </div>
+          <div>
+            <h2 className="text-2xl font-semibold mb-3">Our Company Offered</h2>
+            <ul className="list-disc list-inside">
+              {whatWeOffer?.length > 0 ? (
+                whatWeOffer.map((feature, index) => (
+                  <li key={index}>{feature}</li>
                 ))
               ) : (
                 <li>No features listed</li>
