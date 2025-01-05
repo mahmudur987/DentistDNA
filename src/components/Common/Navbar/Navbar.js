@@ -42,6 +42,9 @@ const menuItems = (
     <li>
       <Link href={"/OrderUs"}>Order US</Link>
     </li>
+    <li>
+      <Link href={"/OurTeam"}>Our Team</Link>
+    </li>
   </>
 );
 const Navbar = () => {
