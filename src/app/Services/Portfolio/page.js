@@ -43,17 +43,3 @@ const PortfolioPage = () => {
 };
 
 export default PortfolioPage;
-
-{
-  /* <div
-key={pkg.id}
-className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300"
->
-<h2 className="text-2xl font-semibold mb-3">{pkg.packageName}</h2>
-<p className="text-gray-600 mb-3">{pkg.description}</p>
-<p className="font-bold mb-3">Price: ${pkg.price}</p>
-<Link href={`/Services/Portfolio/${pkg.slug}`}>
-  <button className="btn btn-primary w-full">View Details</button>
-</Link>
-</div> */
-}

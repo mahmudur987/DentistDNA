@@ -37,6 +37,7 @@ const PackageDetailsPage = ({ params }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+  console.log(images);
 
   return (
     <section className="container mx-auto p-6 bg-gray-100">
@@ -44,23 +45,24 @@ const PackageDetailsPage = ({ params }) => {
         <Link href="/Services/Portfolio">
           <FaBackward className="hover:scale-110 transition-transform" />
         </Link>
-        <h1 className="text-4xl font-bold">{packageName}</h1>
+        <h1 className=" text-xl lg:text-4xl font-bold">{packageName}</h1>
       </div>
       <p className="text-gray-700 mb-4">{description}</p>
 
-      <div className="min-h-screen bg-gray-100 py-10 flex flex-col lg:flex-row">
+      <div className=" bg-gray-100 py-10 flex flex-col lg:flex-row">
         <div className="lg:w-1/2 mx-auto bg-white rounded-lg shadow-lg p-6">
-          <div className="bg-black p-8 rounded-lg">
+          <div className="bg-black p-8 rounded-lg w-[80vw]  md:w-full">
             <Slider {...settings}>
               {images.length > 0 ? (
                 images.map((image, index) => (
-                  <div key={index} className="p-2 h-[700px]">
-                    <figure className="h-full relative">
+                  <div key={index} className=" my-auto bg-red-400">
+                    <figure className="h-[400px] lg:h-[700px] relative">
                       <Image
+                        width={1000}
+                        height={1000}
                         src={image}
                         alt={`${packageName} - Slide ${index + 1}`}
-                        layout="fill"
-                        className="object-cover rounded-lg shadow-md"
+                        className="object-cover rounded-lg shadow-md h-[400px] lg:h-[700px]"
                       />
                     </figure>
                   </div>
