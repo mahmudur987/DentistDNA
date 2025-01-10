@@ -79,10 +79,12 @@ export const serviceData = [
     duration: "4 weeks",
     whatWeOffer: ourOffers,
     includedServices: [
-      "Custom website design with 5 pages",
-      "Advanced SEO setup",
-      "Blog integration",
-      "E-commerce capabilities (if needed)",
+      "Custom website design with 5 pages  html css javascript",
+      "small backend integration for blogs, portfolio,images and videos",
+      "Responsive layout for mobile and desktop",
+      "Portfolio showcase section",
+      "Basic SEO setup",
+      " hosting and domain registration",
       "Performance optimization",
     ],
     additionalServices: [
@@ -117,7 +119,7 @@ export const serviceData = [
     duration: "6 weeks",
     whatWeOffer: ourOffers,
     includedServices: [
-      "Custom website design with unlimited pages",
+      "Custom website design with frontend and backend integration",
       "Integration with advanced tools and APIs",
       "Comprehensive SEO and analytics setup",
       "Multilingual support",
@@ -135,7 +137,7 @@ export const serviceData = [
     ],
     features: [
       { feature: "Revisions", value: "Unlimited during project phase" },
-      { feature: "Support", value: "6 months" },
+      { feature: "Support", value: "18 months" },
     ],
     targetAudience: "Enterprises, large organizations, high-end clients",
     images: imageLinks,

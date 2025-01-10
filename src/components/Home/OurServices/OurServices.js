@@ -1,5 +1,8 @@
+"use client";
+
+import SplashCursor from "@/components/Animation/Cursor";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import {
   FaGlobe,
   FaMobileAlt,
@@ -12,6 +15,8 @@ import {
 } from "react-icons/fa";
 
 const OurServices = () => {
+  const [show, setShow] = useState(false);
+
   const servicesData = {
     title: "Our Services",
     description:
@@ -63,7 +68,11 @@ const OurServices = () => {
   };
 
   return (
-    <section className="bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 py-12 relative">
+    <section
+      className="bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 py-12 relative"
+      onMouseEnter={() => setShow(true)}
+      onMouseLeave={() => setShow(false)}
+    >
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-blue-500 opacity-30 animate-pulse"></div>
       <div className="container mx-auto px-6 lg:px-20 relative z-10">
         <div className="text-center mb-8">
@@ -88,6 +97,8 @@ const OurServices = () => {
           ))}
         </div>
       </div>
+
+      {show && <SplashCursor />}
     </section>
   );
 };

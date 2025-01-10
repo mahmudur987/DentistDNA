@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import img from "../../../Assets/images/Home/img (5).jpg";
+import AnimatedContent from "@/components/Animation/AnimatedContent";
 const AboutUs = () => {
   const aboutUsData = {
     title: "About Us",
@@ -18,26 +19,48 @@ const AboutUs = () => {
         <div className="flex flex-col lg:flex-row items-center">
           {/* Left Side - Image */}
           <div className="lg:w-1/2 mb-10 lg:mb-0">
-            <Image
-              src={aboutUsData.imageUrl}
-              alt="About Us"
-              className="rounded-lg shadow-lg w-full h-auto object-cover"
-            />
+            <AnimatedContent
+              distance={150}
+              direction="horizontal"
+              reverse={true}
+              config={{ tension: 80, friction: 20 }}
+              initialOpacity={0.2}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}
+            >
+              <Image
+                src={aboutUsData.imageUrl}
+                alt="About Us"
+                className="rounded-lg shadow-lg w-full h-auto object-cover"
+              />
+            </AnimatedContent>
           </div>
 
           {/* Right Side - Content */}
           <div className="lg:w-1/2 lg:pl-12">
-            <h2 className="text-4xl font-bold mb-4 text-primary">
-              {aboutUsData.title}
-            </h2>
-            {aboutUsData.description.map((paragraph, index) => (
-              <p key={index} className="text-lg mb-4">
-                {paragraph}
-              </p>
-            ))}
-            <button className="btn btn-primary">
-              {aboutUsData.buttonText}
-            </button>
+            <AnimatedContent
+              distance={150}
+              direction="horizontal"
+              reverse={false}
+              config={{ tension: 80, friction: 20 }}
+              initialOpacity={0.2}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}
+            >
+              <h2 className="text-4xl font-bold mb-4 text-primary">
+                {aboutUsData.title}
+              </h2>
+              {aboutUsData.description.map((paragraph, index) => (
+                <p key={index} className="text-lg mb-4">
+                  {paragraph}
+                </p>
+              ))}
+              <button className="btn btn-primary">
+                {aboutUsData.buttonText}
+              </button>
+            </AnimatedContent>
           </div>
         </div>
       </div>
