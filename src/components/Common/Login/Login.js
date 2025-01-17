@@ -1,9 +1,10 @@
-import { GoogleAuthProvider } from "firebase/auth";
+import { FacebookAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React from "react";
 import { set, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { useAuth } from "@/Context/UserContext";
+import { FaFacebook } from "react-icons/fa";
 
 const Login = ({ setIsLogInModalOpen, setIsModalOpen = () => {} }) => {
   const {
@@ -13,7 +14,7 @@ const Login = ({ setIsLogInModalOpen, setIsModalOpen = () => {} }) => {
   } = useForm();
 
   const from = "/";
-  const { login, googleLogIn, user, SetUser } = useAuth();
+  const { login, googleLogIn, user, SetUser, facebookLogIn } = useAuth();
 
   const handleLogin = (data) => {
     login(data.email, data.password)
@@ -44,7 +45,24 @@ const Login = ({ setIsLogInModalOpen, setIsModalOpen = () => {} }) => {
         console.error("Error", error.message);
       });
   };
+  // handle facebook logion
+  const handleFacebookLogIn = () => {
+    const provider = new FacebookAuthProvider();
+    if (user?.email) {
+      return toast.error("please logout first");
+    }
 
+    facebookLogIn(provider)
+      .then((result) => {
+        const user = result.user;
+        setIsLogInModalOpen(false);
+        SetUser(user);
+      })
+      .catch((error) => {
+        toast.error(error.message.slice(22, 100));
+        console.error("Error", error.message);
+      });
+  };
   return (
     <section className="bg-base-200  md:flex justify-center items-center max-w-md ">
       <div className="w-96 mx-auto  shadow-lg rounded-lg p-2">
@@ -130,6 +148,16 @@ const Login = ({ setIsLogInModalOpen, setIsModalOpen = () => {} }) => {
           >
             <FcGoogle className="mr-2 text-2xl" />
             Log In with Google
+          </button>
+        </div>
+
+        <div className="text-center mt-4">
+          <button
+            onClick={handleFacebookLogIn}
+            className="btn btn-outline btn-accent flex items-center justify-center w-full py-2"
+          >
+            <FaFacebook className="mr-2 text-2xl" />
+            Log In with Facebook
           </button>
         </div>
       </div>

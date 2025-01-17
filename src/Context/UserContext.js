@@ -41,6 +41,11 @@ const UserContext = ({ children }) => {
 
     return signInWithPopup(auth, provider);
   };
+  const facebookLogIn = (provider) => {
+    SetAuthLoading(true);
+
+    return signInWithPopup(auth, provider);
+  };
   const githubLogIn = (provider) => {
     SetAuthLoading(true);
 
@@ -84,6 +89,7 @@ const UserContext = ({ children }) => {
     AuthLoading,
     passwordReset,
     SetAuthLoading,
+    facebookLogIn,
   };
   return (
     <authContext.Provider value={authInfo}>{children}</authContext.Provider>

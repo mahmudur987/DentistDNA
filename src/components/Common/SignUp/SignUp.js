@@ -5,7 +5,8 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { useAuth } from "@/Context/UserContext";
-import { GoogleAuthProvider } from "firebase/auth";
+import { FacebookAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { FaFacebook } from "react-icons/fa";
 const Signup = ({ setIsModalOpen, setIsLogInModalOpen }) => {
   const {
     register,
@@ -66,6 +67,23 @@ const Signup = ({ setIsModalOpen, setIsLogInModalOpen }) => {
         const user = result.user;
         SetUser(user);
         setIsModalOpen(false);
+      })
+      .catch((error) => {
+        toast.error(error.message.slice(22, 100));
+        console.error("Error", error.message);
+      });
+  };
+  const handleFacebookLogIn = () => {
+    const provider = new FacebookAuthProvider();
+    if (user?.email) {
+      return toast.error("please logout first");
+    }
+
+    facebookLogIn(provider)
+      .then((result) => {
+        const user = result.user;
+        setIsLogInModalOpen(false);
+        SetUser(user);
       })
       .catch((error) => {
         toast.error(error.message.slice(22, 100));
@@ -233,6 +251,15 @@ const Signup = ({ setIsModalOpen, setIsLogInModalOpen }) => {
         >
           <FcGoogle className="text-2xl" />
           <span>Sign Up with Google</span>
+        </button>
+      </div>
+      <div className="text-center mt-4">
+        <button
+          onClick={handleFacebookLogIn}
+          className="btn btn-outline btn-accent flex items-center justify-center w-full py-2"
+        >
+          <FaFacebook className="mr-2 text-2xl" />
+          Log In with Facebook
         </button>
       </div>
     </div>
