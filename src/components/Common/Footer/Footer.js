@@ -2,15 +2,29 @@ const Footer = () => {
   const footerSections = [
     {
       title: "Services",
-      links: ["Branding", "Design", "Marketing", "Advertisement"],
+      links: [
+        { name: "Branding", url: "/branding" },
+        { name: "Design", url: "/design" },
+        { name: "Marketing", url: "/marketing" },
+        { name: "Advertisement", url: "/advertisement" },
+      ],
     },
     {
       title: "Company",
-      links: ["About us", "Contact", "Jobs", "Press kit"],
+      links: [
+        { name: "About us", url: "/about-us" },
+        { name: "Contact", url: "/contact" },
+        { name: "Jobs", url: "/jobs" },
+        { name: "Press kit", url: "/press-kit" },
+      ],
     },
     {
       title: "Legal",
-      links: ["Terms of use", "Privacy policy", "Cookie policy"],
+      links: [
+        { name: "Terms of use", url: "/terms-of-use" },
+        { name: "Privacy policy", url: "/privacy-policy" },
+        { name: "Cookie policy", url: "/cookie-policy" },
+      ],
     },
   ];
 
@@ -38,8 +52,8 @@ const Footer = () => {
         <nav key={index}>
           <h6 className="footer-title">{section.title}</h6>
           {section.links.map((link, idx) => (
-            <a key={idx} href="#" className="link link-hover">
-              {link}
+            <a key={idx} href={link.url} className="link link-hover">
+              {link.name}
             </a>
           ))}
         </nav>
