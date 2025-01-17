@@ -54,13 +54,18 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <>
-      <div className="navbar bg-base-100 fixed z-[999]">
+    <nav className="fixed z-[999] w-full">
+      <div className="navbar bg-base-100 container mx-auto ">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <button
+              type="button"
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost lg:hidden"
+            >
               {menuIcon}
-            </div>
+            </button>
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
@@ -157,7 +162,7 @@ const Navbar = () => {
           setIsModalOpen={setIsModalOpen}
         />
       </ModalWrapper>
-    </>
+    </nav>
   );
 };
 

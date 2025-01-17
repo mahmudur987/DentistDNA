@@ -29,7 +29,7 @@ const Hero = () => {
             help you transform your online presence today!
           </p>
 
-          <button className="btn btn-primary">Learn More</button>
+          {/* <button className="btn btn-primary">Learn More</button> */}
         </div>
       </div>
     </div>
