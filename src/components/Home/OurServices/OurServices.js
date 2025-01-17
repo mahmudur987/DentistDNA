@@ -98,7 +98,7 @@ const OurServices = () => {
         </div>
       </div>
 
-      {show && <SplashCursor />}
+      {/* {show && <SplashCursor />} */}
     </section>
   );
 };
