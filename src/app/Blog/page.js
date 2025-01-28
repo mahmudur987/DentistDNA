@@ -1,3 +1,4 @@
+import HTMLViewer from "@/components/Blog/HTMLViewer";
 import { blogs } from "@/constant/BlogData";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,6 +6,8 @@ import Link from "next/link";
 export default async function BlogPage() {
   return (
     <div className="container mx-auto p-6">
+      {/* <HTMLViewer /> */}
+
       <h1 className="text-3xl font-bold mb-6">Blog</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {blogs.map((blog) => (
