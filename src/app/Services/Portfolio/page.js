@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const PortfolioPage = () => {
   return (
-    <div className="min-h-screen bg-gray-100 py-10">
+    <div className="min-h-screen bg-gray-100 py-10 ">
       <h1 className="text-5xl font-bold text-center mb-10">
         Our Portfolio Packages
       </h1>

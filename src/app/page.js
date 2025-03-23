@@ -6,11 +6,10 @@ import Hero from "@/components/Home/Hero/Hero";
 
 import OurServices from "@/components/Home/OurServices/OurServices";
 import Testimonial from "@/components/Home/Testimonial/Testimonial";
-import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="container mx-auto flex flex-col gap-20 ">
+    <div className=" flex flex-col gap-20 ">
       <Hero />
       <OurServices />
       <AboutUs />

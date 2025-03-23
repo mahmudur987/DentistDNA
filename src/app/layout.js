@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased       `}
       >
         <UserContext>
-          <div className="h-[70px]">
+          <div className="sticky top-0 z-50">
             <Navbar />
           </div>
           <main className="min-h-screen">{children}</main>

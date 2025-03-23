@@ -10,6 +10,8 @@ import Image from "next/image";
 import { FaSignOutAlt } from "react-icons/fa";
 import img1 from "../../../Assets/dummy 1.jpg";
 import img2 from "../../../Assets/dummy 2.jpeg";
+import siteLogo from "../../../Assets/siteLogo1.png";
+
 export const profilePlaceHolder = img1;
 export const PlaceHolder = img2;
 export const menuIcon = (
@@ -28,25 +30,37 @@ export const menuIcon = (
     />
   </svg>
 );
+
 const menuItems = (
   <>
     <li>
-      <Link href={"/"}>Home</Link>
+      <Link href={"/"} className="font-bold">
+        Home
+      </Link>
     </li>
     <li>
-      <Link href={"/Blog"}>Blog</Link>
+      <Link href={"/Blog"} className="font-bold">
+        Blog
+      </Link>
     </li>
     <li>
-      <Link href={"/AboutUs"}>About Us</Link>
+      <Link href={"/AboutUs"} className="font-bold">
+        About Us
+      </Link>
     </li>
     <li>
-      <Link href={"/OrderUs"}>Order US</Link>
+      <Link href={"/OrderUs"} className="font-bold">
+        Order US
+      </Link>
     </li>
     <li>
-      <Link href={"/OurTeam"}>Our Team</Link>
+      <Link href={"/OurTeam"} className="font-bold">
+        Our Team
+      </Link>
     </li>
   </>
 );
+
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogInModalOpen, setIsLogInModalOpen] = useState(false);
@@ -54,8 +68,8 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed z-[999] w-full">
-      <div className="navbar bg-base-100 container mx-auto ">
+    <nav className="fixed z-[999] w-full  backdrop-blur">
+      <div className="navbar  container mx-auto  ">
         <div className="navbar-start">
           <div className="dropdown">
             <button
@@ -74,7 +88,13 @@ const Navbar = () => {
             </ul>
           </div>
           <Link href={"/"} className="btn btn-ghost text-xl">
-            Dentist DNA
+            <Image
+              src={siteLogo}
+              alt="Logo"
+              width={200}
+              height={100}
+              className="rounded-lg"
+            />
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
